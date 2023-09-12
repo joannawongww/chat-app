@@ -12,5 +12,5 @@ Provides 2 communication features: sending images and location data.
 Data gets stored both online and offline.  
 
 
-# Dependencies   
+## Dependencies   
 React Native, Expo and Google Firestore Database
