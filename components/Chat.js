@@ -57,7 +57,7 @@ const ChatScreen = ({ route, navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: color}]}>
       {/* Render chat interface */}
       <GiftedChat
         messages={messages}
