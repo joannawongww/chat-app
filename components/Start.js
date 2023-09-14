@@ -13,7 +13,7 @@ const image = require("../img/background-image.png");
 
 // 4 background color code
 const backgroundColors = {
-  a: "#000000",
+  a: "#6B6B6B",
   b: "#757083",
   c: "#8A95A5",
   d: "#B9C6AE",
