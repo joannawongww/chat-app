@@ -7,7 +7,9 @@ import {
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Alert
 } from "react-native";
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 const image = require("../img/background-image.png");
 
@@ -22,6 +24,19 @@ const backgroundColors = {
 const StartScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [color, setColor] = useState(backgroundColors);
+
+  // sign in anonymous
+    const auth = getAuth();
+    const signInUser = () => {
+        signInAnonymously(auth)
+            .then((result) => {
+                navigation.navigate('ChatScreen', { userID: result.user.uid, name:name, color: color });
+                Alert.alert("Signed in successfully");
+            })
+            .catch((error) => {
+                Alert.alert("Unable to sign in, try later again.")
+            })
+    }
 
   return (
     <View style={styles.container}>
@@ -74,12 +89,10 @@ const StartScreen = ({ navigation }) => {
             ></TouchableOpacity>
           </View>
 
-          {/* render button to navigate to chatscreen */}
+          {/* button to navigate to chatscreen */}
           <TouchableOpacity
             style={styles.button}
-            onPress={() =>
-              navigation.navigate("ChatScreen", { name: name, color: color })
-            }
+            onPress={signInUser}
           >
             <Text style={styles.buttonText}>Start Chatting!</Text>
           </TouchableOpacity>
