@@ -14,8 +14,10 @@ import {
   orderBy,
 } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import CustomActions from "./CustomActions";
+import MapView from "react-native-maps";
 
-const ChatScreen = ({ db, route, navigation, isConnected }) => {
+const ChatScreen = ({ db, route, navigation, isConnected, storage }) => {
   const { name, color, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
@@ -75,7 +77,7 @@ const ChatScreen = ({ db, route, navigation, isConnected }) => {
 
   // prevent user compose new messages when offline
   const renderInputToolbar = (props) => {
-    if (isConnected) {
+    if (isConnected === true) {
       return <InputToolbar {...props} />;
     } else { return null }
   };
@@ -99,6 +101,30 @@ const ChatScreen = ({ db, route, navigation, isConnected }) => {
     );
   };
 
+  // action menu with circle button +
+    const renderCustomActions = (props) => {
+        return <CustomActions onSend={onSend} storage={storage} {...props} />;
+    }
+
+    // check if message conatins location data, if yes render map
+    const renderCustomView = (props) => {
+        const {currentMessage} = props;
+        if (currentMessage.location) {
+            return (
+                <MapView
+                    style={{width: 150, height: 100, borderRadius: 13, margin: 3}}
+                    region = {{
+                        latitude: currentMessage.location.latitude,
+                        longitude: currentMessage.location.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                />
+            )
+        }
+        return null;
+    }
+
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
       {/* Render chat interface */}
@@ -106,6 +132,8 @@ const ChatScreen = ({ db, route, navigation, isConnected }) => {
         messages={messages}
         renderBubble={renderBubble}
         renderInputToolbar={renderInputToolbar}
+        renderActions={renderCustomActions}
+        renderCustomView={renderCustomView}
         onSend={(messages) => onSend(messages)}
         user={{
           _id: userID,
