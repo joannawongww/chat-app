@@ -43,7 +43,7 @@ App will provide users with a chat interface and options to share images and the
 
 ## Running the app
 
-`git clone https://github.com/joannawongww/chat-app`  
-`cd [PROJECT_FOLDER_NAME]`  
-`npm install @react-native-async-storage/async-storage @react-native-community/netinfo @react-navigation/native @react-navigation/native-stack expo firebase react-native react-native-gifted-chat react-native-safe-area-context react-native-screens expo-image-picker expo-location react-native-maps`
-`expo start`
+1. `git clone https://github.com/joannawongww/chat-app`
+2. `cd [PROJECT_FOLDER_NAME]`
+3. `npm install @react-native-async-storage/async-storage @react-native-community/netinfo @react-navigation/native @react-navigation/native-stack expo firebase react-native react-native-gifted-chat react-native-safe-area-context react-native-screens expo-image-picker expo-location react-native-maps`
+4. `expo start`
