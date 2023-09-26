@@ -33,10 +33,6 @@ App will provide users with a chat interface and options to share images and the
 
 - For Android simulator
 
-## Dependencies to install
-
-`npm install @react-native-async-storage/async-storage @react-native-community/netinfo @react-navigation/native @react-navigation/native-stack expo firebase react-native react-native-gifted-chat react-native-safe-area-context react-native-screens expo-image-picker expo-location react-native-maps`
-
 ## Database Configuration
 
 1. Go to Firebase Console and create new project.
@@ -49,5 +45,5 @@ App will provide users with a chat interface and options to share images and the
 
 `git clone https://github.com/joannawongww/chat-app`  
 `cd [PROJECT_FOLDER_NAME]`  
-`npm init`  
+`npm install @react-native-async-storage/async-storage @react-native-community/netinfo @react-navigation/native @react-navigation/native-stack expo firebase react-native react-native-gifted-chat react-native-safe-area-context react-native-screens expo-image-picker expo-location react-native-maps`
 `expo start`
