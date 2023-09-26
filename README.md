@@ -2,8 +2,9 @@
 
 ## Description
 
-To build a chat app for mobile devices using React Native.  
-App will provide users with a chat interface and options to share images and their location.
+A chat app for mobile devices using React Native. App will provide users with a chat interface and options to share images and their location.
+
+<img src="/assets/app.jpg" alt ="A screenshot of Chat App" width="200">
 
 ## Features
 
