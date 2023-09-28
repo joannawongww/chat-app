@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  KeyboardAvoidingView,
-  Platform
-} from "react-native";
+import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
 import { Bubble, GiftedChat, InputToolbar } from "react-native-gifted-chat";
 import {
   collection,
@@ -28,8 +23,7 @@ const ChatScreen = ({ db, route, navigation, isConnected, storage }) => {
     navigation.setOptions({ title: name });
 
     if (isConnected === true) {
-      
-        // unregister to avoid registering multiple listener
+      // unregister to avoid registering multiple listener
       if (unsubMessages) unsubMessages();
       unsubMessages = null;
 
@@ -79,7 +73,9 @@ const ChatScreen = ({ db, route, navigation, isConnected, storage }) => {
   const renderInputToolbar = (props) => {
     if (isConnected === true) {
       return <InputToolbar {...props} />;
-    } else { return null }
+    } else {
+      return null;
+    }
   };
 
   {
@@ -102,28 +98,28 @@ const ChatScreen = ({ db, route, navigation, isConnected, storage }) => {
   };
 
   // action menu with circle button +
-    const renderCustomActions = (props) => {
-        return <CustomActions onSend={onSend} storage={storage} {...props} />;
-    }
+  const renderCustomActions = (props) => {
+    return <CustomActions onSend={onSend} storage={storage} {...props} />;
+  };
 
-    // check if message conatins location data, if yes render map
-    const renderCustomView = (props) => {
-        const {currentMessage} = props;
-        if (currentMessage.location) {
-            return (
-                <MapView
-                    style={{width: 150, height: 100, borderRadius: 13, margin: 3}}
-                    region = {{
-                        latitude: currentMessage.location.latitude,
-                        longitude: currentMessage.location.longitude,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
-                />
-            )
-        }
-        return null;
+  // check if message conatins location data, if yes render map
+  const renderCustomView = (props) => {
+    const { currentMessage } = props;
+    if (currentMessage.location) {
+      return (
+        <MapView
+          style={{ width: 150, height: 100, borderRadius: 13, margin: 3 }}
+          region={{
+            latitude: currentMessage.location.latitude,
+            longitude: currentMessage.location.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      );
     }
+    return null;
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
